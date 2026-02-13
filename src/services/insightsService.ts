@@ -26,7 +26,7 @@ export const analyzeTransactions = async (transactions: Transaction[]) => {
         ],
       });
 
-      const category = completion.choices[0].message.content.trim();
+      const category = completion.choices[0]?.message?.content?.trim() || "Uncategorized";;
       return { ...tx, category };
     })
   );
@@ -98,8 +98,8 @@ export const analyzeTransactions = async (transactions: Transaction[]) => {
     ],
   });
 
-  const insights = completion.choices[0].message.content
-    .split("\n")
+  const insights = completion.choices[0]?.message?.content
+    ?.split("\n")
     .filter(Boolean);
 
   return { transactions: withAnomalies, insights };
