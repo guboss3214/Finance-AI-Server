@@ -102,5 +102,7 @@ export const analyzeTransactions = async (transactions: Transaction[]) => {
     ?.split("\n")
     .filter(Boolean);
 
+  console.log(withAnomalies, insights)
+
   return { transactions: withAnomalies, insights };
 };
